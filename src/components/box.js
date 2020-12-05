@@ -42,7 +42,7 @@ function Controls() {
             
             console.log('here1')
 
-            const numberOfObjects = Math.floor(random.range(1,20))
+            const numberOfObjects = Math.floor(random.range(3,15))
             console.log(numberOfObjects)
 
             useFrame(state => {
@@ -52,12 +52,14 @@ function Controls() {
               let iter = 0;
               for (let i = 0; i < numberOfObjects; i++)
                 {
-                    const x = random.range(-1.5,1.5)
-                    const y = random.range(-1.5,1.5)
-                    const z = random.range(-1.5,1.5)
+                    const x = random.range(-1,1)
+                    const y = random.range(-1,1)
+                    const z = random.range(-1,1)
                     const id = iter++
                     tempObject.position.set(x, y, z)
-                    tempColor.set(colorset[i]).toArray(colorArray, id * 5);
+                    tempObject.scale.set(random.range(-1,1), random.range(-1, 1), random.range(-1,1))
+                    tempObject.scale.multiplyScalar(0.5);
+                    tempColor.set(random.pick(colorset)).toArray(colorArray, id * 5);
                     tempObject.updateMatrix()
                     ref.current.setMatrixAt(id, tempObject.matrix)
                 }
@@ -89,9 +91,9 @@ function Controls() {
     const [objectNumber, setObjectNumber] = useState(15); */
     let numberPlaceholder= 15;
     console.log(numberPlaceholder)
-    const sizeX = random.range(0.01,0.5)
-    const sizeY = random.range(0.01,0.5)
-    const sizeZ = random.range(0.01,0.5)
+    const sizeX = random.range(.5,1.2)
+    const sizeY = random.range(.5,1.2)
+    const sizeZ = random.range(.5,1.2)
 
 
     return(
