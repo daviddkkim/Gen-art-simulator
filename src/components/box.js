@@ -42,7 +42,7 @@ function Controls() {
             
             console.log('here1')
 
-            const numberOfObjects = Math.floor(random.range(1,50))
+            const numberOfObjects = Math.floor(random.range(1,20))
             console.log(numberOfObjects)
 
             useFrame(state => {
@@ -82,7 +82,9 @@ function Controls() {
 
   function Boxes(){
     
-    const palette = random.pick(palettes);
+    const palette1 = random.pick(palettes);
+    const palette2 = random.pick(palettes);
+    const palette3 = random.pick(palettes);
     /* const [color, randomizeColor] = useState(palette)
     const [objectNumber, setObjectNumber] = useState(15); */
     let numberPlaceholder= 15;
@@ -99,7 +101,9 @@ function Controls() {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <pointLight position={[-10, -10, -10]} />
         <Suspense fallback={<>Loading...</>}>
-        <RandomBoxes /* numberOfObjects={objectNumber} */  palette={palette}  size={[sizeX, sizeY, sizeZ]} ></RandomBoxes>
+        <RandomBoxes /* numberOfObjects={objectNumber} */  palette={palette1}  size={[sizeX, sizeY, sizeZ]} ></RandomBoxes>
+        <RandomBoxes /* numberOfObjects={objectNumber} */  palette={palette2}  size={[sizeX * random.range(0.5,2), sizeY * random.range(0.5,2), sizeZ * random.range(0.5,2)]} ></RandomBoxes>
+        <RandomBoxes /* numberOfObjects={objectNumber} */  palette={palette3}  size={[sizeX * random.range(0.5,1.2), sizeY * random.range(0.5,1.2), sizeZ * random.range(0.5,1.2)]} ></RandomBoxes>
         </Suspense>
         <Controls/>
       </Canvas> 
