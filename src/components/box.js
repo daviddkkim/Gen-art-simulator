@@ -20,15 +20,14 @@ function Controls() {
     return <orbitControls ref={controls} args={[camera, gl.domElement]} enableDamping dampingFactor={0.1} rotateSpeed={0.5} />
 }
 
-function swapPalette() {
+/* function swapPalette() {
    const palette = random.pick(palettes);
    console.log('palette change');
    return palette;
-}
+} */
 
 
         function RandomBoxes(props) {
-            console.log('here')
             const [colorset, changeColor] = useState(props.palette)
             const colorArray = useMemo(() => Float32Array.from(new Array(100).fill().flatMap((_, i) => tempColor.set(colorset[i]).toArray())), [colorset])
         
@@ -84,19 +83,15 @@ function swapPalette() {
   function Boxes(){
     
     const palette = random.pick(palettes);
-    const [color, randomizeColor] = useState(palette)
-    const [objectNumber, setObjectNumber] = useState(15);
+    /* const [color, randomizeColor] = useState(palette)
+    const [objectNumber, setObjectNumber] = useState(15); */
     let numberPlaceholder= 15;
     console.log(numberPlaceholder)
     const sizeX = random.range(0.01,0.5)
     const sizeY = random.range(0.01,0.5)
     const sizeZ = random.range(0.01,0.5)
 
-    function changeAmount(e) {
-        numberPlaceholder = e.target.value;
-        console.log(numberPlaceholder)
 
-    }
     return(
     <div className='canvas-layout'>
       <Canvas className='canvas'>
@@ -104,7 +99,7 @@ function swapPalette() {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <pointLight position={[-10, -10, -10]} />
         <Suspense fallback={<>Loading...</>}>
-        <RandomBoxes numberOfObjects={objectNumber} palette={color} size={[sizeX, sizeY, sizeZ]} ></RandomBoxes>
+        <RandomBoxes /* numberOfObjects={objectNumber} */  palette={palette}  size={[sizeX, sizeY, sizeZ]} ></RandomBoxes>
         </Suspense>
         <Controls/>
       </Canvas> 
